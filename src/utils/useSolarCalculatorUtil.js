@@ -27,19 +27,19 @@ export const useSolarCalculatorUtil = () => {
   });
 
   const onValidate = (objectToBeValidated, fieldsToBeValidated) => {
-    if(fieldsToBeValidated){
+    if (fieldsToBeValidated) {
       return fieldsToBeValidated.every((attr) => {
         const value = objectToBeValidated[attr] ?? undefined;
-        return value !== null && value !== undefined && (value !== "" || value >0);
+        return (
+          value !== null && value !== undefined && (value !== "" || value > 0)
+        );
       });
     }
 
-    return Object.values(objectToBeValidated).every(value => 
-      value !== null && 
-      value !== undefined && 
-      (value !== "" || value >=1)
+    return Object.values(objectToBeValidated).every(
+      (value) =>
+        value !== null && value !== undefined && (value !== "" || value >= 1),
     );
-
   };
 
   const updateSolarCalculationObject = (key, value) => {
@@ -71,17 +71,20 @@ export const useSolarCalculatorUtil = () => {
   };
 
   const loanAndSavingsCalculation = () => {
-    const validateCalculation = onValidate(solarCalculationObject)
-    const validateSaving = onValidate(solarSavingsObject, solarSavingRequiredFields)
-    if(!validateCalculation || !validateSaving){
-      if(!validateCalculation){
-        setShowCalculationError(true)
+    const validateCalculation = onValidate(solarCalculationObject);
+    const validateSaving = onValidate(
+      solarSavingsObject,
+      solarSavingRequiredFields,
+    );
+    if (!validateCalculation || !validateSaving) {
+      if (!validateCalculation) {
+        setShowCalculationError(true);
       }
-      if(!validateSaving){
-        setShowSavingError(true)
+      if (!validateSaving) {
+        setShowSavingError(true);
       }
 
-      return
+      return;
     }
     setShowSavingError(false);
     const bill = solarCalculationObject.monthlyElectricityBill ?? 0;
@@ -100,7 +103,7 @@ export const useSolarCalculatorUtil = () => {
 
     updateSolarSavingObject(
       "targetMonthlyPayment",
-      targetMonthlyPayment.toFixed(2)
+      targetMonthlyPayment.toFixed(2),
     );
     updateSolarSavingObject("breakevenYears", breakevenYears.toFixed(1));
   };

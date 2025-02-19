@@ -1,10 +1,10 @@
-import './App.scss';
-import { HomePage } from './pages/homePage/HomePage';
+import "./App.scss";
+import { HomePage } from "./pages/homePage/HomePage";
 
 function App() {
   return (
     <div>
-      <HomePage/>
+      <HomePage />
     </div>
   );
 }

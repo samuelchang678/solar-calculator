@@ -1,7 +1,6 @@
 import "./HomePage.scss";
 import { malaysianStates } from "../../constants/solarConstants";
 import { useSolarCalculatorUtil } from "../../utils/useSolarCalculatorUtil";
-import { useMemo } from "react";
 import money from "../../asset/money.svg";
 import savings from "../../asset/savings.svg";
 
@@ -14,7 +13,7 @@ export const HomePage = () => {
     solarSetupCalculation,
     loanAndSavingsCalculation,
     updateSolarCalculationObject,
-    updateSolarSavingObject
+    updateSolarSavingObject,
   } = useSolarCalculatorUtil();
   return (
     <div className="homePage">
@@ -40,7 +39,7 @@ export const HomePage = () => {
           onChange={(event) => {
             updateSolarCalculationObject(
               "monthlyElectricityBill",
-              parseFloat(event.target.value)
+              parseFloat(event.target.value),
             );
           }}
           required
@@ -64,7 +63,7 @@ export const HomePage = () => {
 
         <button onClick={solarSetupCalculation}>Calculate Setup Cost</button>
         {showCalculationError ? (
-          <div>Please enter monthly tnb bill AND select state</div>
+          <div>Please enter monthly TNB bill AND select state</div>
         ) : (
           <p id="calculationResults">
             Selected State: {solarCalculationObject?.selectedState}

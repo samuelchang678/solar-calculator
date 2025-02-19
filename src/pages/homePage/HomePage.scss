@@ -1,132 +1,131 @@
 :root {
-    --rooftop-primary-yellow: #fcd913;
-    --rooftop-secondary-green: #4CAF50 ;
-    --rooftop-white: #ffffff;
-    --rooftop-black: #000000;
+  --rooftop-primary-yellow: #fcd913;
+  --rooftop-secondary-green: #4caf50;
+  --rooftop-white: #ffffff;
+  --rooftop-black: #000000;
 }
 
 .homePage {
-    input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-    width: 90%;
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    
-    div{
-        margin-bottom: 20px;
-    }
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
 
-    h1,
-    h2,
-    h3,
-    h4 {
-        font-family: 'Arial', sans-serif;
-    }
+  div {
+    margin-bottom: 20px;
+  }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Arial", sans-serif;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  input,
+  select,
+  button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 16px;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+
+  // input,
+  // select{
+  //     width: 90%;
+  // }
+
+  // button{width: 100%;}
+
+  button {
+    background-color: var(--rooftop-black);
+    color: var(--rooftop-white);
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #333333;
+  }
+
+  @media (max-width: 600px) {
     h1 {
-        font-size: 32px;
+      font-size: 28px;
     }
 
     h2 {
-        font-size: 28px;
+      font-size: 24px;
     }
 
     h3 {
-        font-size: 24px;
+      font-size: 20px;
     }
 
     h4 {
-        font-size: 20px;
+      font-size: 18px;
     }
-
-    input,
-    select,
-    button {
-        width: 100%;
-        padding: 10px;
-        margin: 5px 0;
-        font-size: 16px;
-    }
-
-    input{
-        margin-right: 10px;
-    }
-
-    // input,
-    // select{
-    //     width: 90%;
-    // }
-
-    // button{width: 100%;}
-
-    button {
-        background-color: var(--rooftop-black);
-        color: var(--rooftop-white);
-        border: none;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: #333333;
-    }
-
-    @media (max-width: 600px) {
-        h1 {
-            font-size: 28px;
-        }
-
-        h2 {
-            font-size: 24px;
-        }
-
-        h3 {
-            font-size: 20px;
-        }
-
-        h4 {
-            font-size: 18px;
-        }
-    }
+  }
 }
 
-.costCalculator,.savingsCalculator {
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
+.costCalculator,
+.savingsCalculator {
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
 }
 
-.costCalculator{
-    background-color: var(--rooftop-primary-yellow);
+.costCalculator {
+  background-color: var(--rooftop-primary-yellow);
 }
 
 .savingsCalculator {
-    background-color: var(--rooftop-secondary-green);
+  background-color: var(--rooftop-secondary-green);
 }
 
 .icon {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
-.flexContainer{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 
-    >div{
-        width: 50%; /* Make each item take up 50% of the container */
-        align-content: center;
-        // padding: 20px;
+  > div {
+    width: 50%; /* Make each item take up 50% of the container */
+    align-content: center;
+    // padding: 20px;
     //   background-color: lightblue;
     //   text-align: center;
     //   border-radius: 5px;
-    //   box-sizing: border-box; 
-    }
+    //   box-sizing: border-box;
+  }
 }
-
-
