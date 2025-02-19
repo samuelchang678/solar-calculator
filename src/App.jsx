@@ -1,11 +1,14 @@
 import "./App.scss";
-import { HomePage } from "./pages/homePage/HomePage";
+import { RoutePage } from "./Routes";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <HomePage />
-    </div>
+    <BrowserRouter>
+      <div className="pages">
+        <RoutePage />
+      </div>
+    </BrowserRouter>
   );
 }
 

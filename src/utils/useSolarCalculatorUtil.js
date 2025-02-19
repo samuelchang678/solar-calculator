@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { useState } from "react";
 
 const TARIFF = 0.509;
@@ -14,6 +15,7 @@ const solarSavingRequiredFields = ["yearLoan"];
 export const useSolarCalculatorUtil = () => {
   const [showCalculationError, setShowCalculationError] = useState(false);
   const [showSavingError, setShowSavingError] = useState(false);
+  const [showCallbackError, setShowCallbackError] = useState(false);
   const [solarCalculationObject, setSolarCalculationObject] = useState({
     systemSize: 0,
     totalCost: 0,
@@ -25,8 +27,13 @@ export const useSolarCalculatorUtil = () => {
     targetMonthlyPayment: 0,
     breakevenYears: 0,
   });
+  const [callbackObject, setCallbackObject] = useState({
+    name: "",
+    emailOrPhone: "",
+  });
 
   const onValidate = (objectToBeValidated, fieldsToBeValidated) => {
+    // validate function that takes in object to be validate and an array of fields to check.
     if (fieldsToBeValidated) {
       return fieldsToBeValidated.every((attr) => {
         const value = objectToBeValidated[attr] ?? undefined;
@@ -48,6 +55,10 @@ export const useSolarCalculatorUtil = () => {
 
   const updateSolarSavingObject = (key, value) => {
     setSolarSavingObject((prev) => ({ ...prev, [key]: value }));
+  };
+
+  const updateCallbackObject = (key, value) => {
+    setCallbackObject((prev) => ({ ...prev, [key]: value }));
   };
 
   const solarSetupCalculation = () => {
@@ -108,14 +119,36 @@ export const useSolarCalculatorUtil = () => {
     updateSolarSavingObject("breakevenYears", breakevenYears.toFixed(1));
   };
 
+  const onSubmitCallbackForm = async (event) => {
+    event.preventDefault();
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const phoneRegex = /^0\d{9}$/;
+
+    if (
+      !(
+        emailRegex.test(callbackObject.emailOrPhone) ||
+        phoneRegex.test(callbackObject.emailOrPhone)
+      )
+    ) {
+      setShowCallbackError(true);
+
+      return;
+    }
+    setShowCallbackError(false);
+  };
+
   return {
     solarSavingsObject,
     solarCalculationObject,
+    callbackObject,
     showCalculationError,
     showSavingError,
+    showCallbackError,
     solarSetupCalculation,
     loanAndSavingsCalculation,
+    onSubmitCallbackForm,
     updateSolarCalculationObject,
     updateSolarSavingObject,
+    updateCallbackObject,
   };
 };

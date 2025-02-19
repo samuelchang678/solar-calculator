@@ -1,6 +1,7 @@
 :root {
   --rooftop-primary-yellow: #fcd913;
   --rooftop-secondary-green: #4caf50;
+  --rooftop-tertiary-blue: #2196f3;
   --rooftop-white: #ffffff;
   --rooftop-black: #000000;
 }
@@ -57,13 +58,6 @@
     margin-right: 10px;
   }
 
-  // input,
-  // select{
-  //     width: 90%;
-  // }
-
-  // button{width: 100%;}
-
   button {
     background-color: var(--rooftop-black);
     color: var(--rooftop-white);
@@ -95,7 +89,8 @@
 }
 
 .costCalculator,
-.savingsCalculator {
+.savingsCalculator,
+.emailContactContainer {
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
@@ -109,6 +104,10 @@
   background-color: var(--rooftop-secondary-green);
 }
 
+.emailContactContainer {
+  background-color: var(--rooftop-tertiary-blue);
+}
+
 .icon {
   width: 40px;
   height: 40px;
@@ -120,12 +119,7 @@
   flex-direction: row;
 
   > div {
-    width: 50%; /* Make each item take up 50% of the container */
+    width: 50%;
     align-content: center;
-    // padding: 20px;
-    //   background-color: lightblue;
-    //   text-align: center;
-    //   border-radius: 5px;
-    //   box-sizing: border-box;
   }
 }

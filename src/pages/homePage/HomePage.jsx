@@ -8,12 +8,16 @@ export const HomePage = () => {
   const {
     solarSavingsObject,
     solarCalculationObject,
+    callbackObject,
     showCalculationError,
     showSavingError,
+    showCallbackError,
     solarSetupCalculation,
     loanAndSavingsCalculation,
+    onSubmitCallbackForm,
     updateSolarCalculationObject,
     updateSolarSavingObject,
+    updateCallbackObject,
   } = useSolarCalculatorUtil();
   return (
     <div className="homePage">
@@ -108,17 +112,41 @@ export const HomePage = () => {
         )}
       </div>
 
-      <div>
+      <div class="emailContactContainer">
         <h3>Request a Callback</h3>
-        <form>
+        <form onSubmit={onSubmitCallbackForm}>
           <label for="name">Name</label>
-          <input type="text" id="name" placeholder="Your Name" required />
+          <input
+            type="text"
+            id="name"
+            placeholder="Your Name"
+            required
+            value={callbackObject.name}
+            onChange={(event) => {
+              updateCallbackObject("name", event.target.value);
+            }}
+          />
 
           <label for="contact">Phone/Email</label>
-          <input type="text" id="contact" placeholder="Your Contact" required />
+          <input
+            type="text"
+            id="contact"
+            placeholder="Email or Phone Number"
+            required
+            value={callbackObject.emailOrPhone}
+            onChange={(event) => {
+              updateCallbackObject("emailOrPhone", event.target.value);
+            }}
+          />
 
           <button type="submit">Submit</button>
         </form>
+
+        {showCallbackError &&
+          callbackObject.name &&
+          callbackObject.emailOrPhone && (
+            <div>Please enter correct email address or phone number</div>
+          )}
       </div>
     </div>
   );
