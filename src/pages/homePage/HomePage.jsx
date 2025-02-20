@@ -86,15 +86,18 @@ export const HomePage = () => {
             <img src={savings} alt="spending" class="icon" />
           </div>
         </div>
+
+        <label for="yearLoan">Year Loan</label>
+
         <input
           type="number"
           id="yearLoan"
+          min="1"
           placeholder="Enter loan years"
           value={solarSavingsObject.yearLoan}
           onChange={(event) => {
             updateSolarSavingObject("yearLoan", parseInt(event.target.value));
           }}
-          required
         />
         <button onClick={loanAndSavingsCalculation}>Calculate Savings</button>
 
