@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-globals */
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const TARIFF = 0.509;
 const PANELCOST = 3000;
@@ -31,6 +32,8 @@ export const useSolarCalculatorUtil = () => {
     name: "",
     emailOrPhone: "",
   });
+
+  const navigate = useNavigate();
 
   const onValidate = (objectToBeValidated, fieldsToBeValidated) => {
     // validate function that takes in object to be validate and an array of fields to check.
@@ -124,6 +127,9 @@ export const useSolarCalculatorUtil = () => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const phoneRegex = /^0\d{9}$/;
 
+    const validateCalculation = onValidate(solarCalculationObject);
+    const validateSaving = onValidate(solarSavingsObject);
+
     if (
       !(
         emailRegex.test(callbackObject.emailOrPhone) ||
@@ -134,7 +140,25 @@ export const useSolarCalculatorUtil = () => {
 
       return;
     }
+
+    if (!validateCalculation || !validateSaving) {
+      if (!validateCalculation) {
+        setShowCalculationError(true);
+      }
+      if (!validateSaving) {
+        setShowSavingError(true);
+      }
+
+      return;
+    }
+    setShowSavingError(false);
+    setShowCalculationError(false);
+
     setShowCallbackError(false);
+
+    navigate(
+      `/print?name=${encodeURIComponent(callbackObject.name)}&contact=${encodeURIComponent(callbackObject.emailOrPhone)}`,
+    );
   };
 
   return {

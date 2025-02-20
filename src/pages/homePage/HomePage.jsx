@@ -147,6 +147,11 @@ export const HomePage = () => {
           callbackObject.emailOrPhone && (
             <div>Please enter correct email address or phone number</div>
           )}
+        {callbackObject.name &&
+          callbackObject.emailOrPhone &&
+          (showCalculationError || showSavingError) && (
+            <div>Please enter correct email address or phone number</div>
+          )}
       </div>
     </div>
   );
